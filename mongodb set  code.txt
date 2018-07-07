@@ -1,0 +1,4 @@
+D:\Program Files\MongoDB\Server\4.0\bin
+
+mongod --config "D:\mongoData\mongo.cfg"
+mongod --service --config "D:\mongoData\mongo.cfg" --install --serviceName "MongoDB"
