@@ -11,7 +11,7 @@ var bookschema = new mongoose.Schema({
     book_name:String,
     author:String,
     price:String,
-    num:Number,
+    num1:Number,
     //0在售,1下架,2预定,3展示
     state:String,
     describe:String,
