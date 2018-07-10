@@ -50,8 +50,10 @@ exports.delUser= function(req, res) {
 
 //添加一个用户
 exports.addUser= function(req, res) {
+    console.log(req.body);
     var username=req.body.username;
     var password=req.body.password;
+    console.log(username,password);
 
     var newUser=new User(
         {
@@ -92,7 +94,8 @@ exports.updateUser= function(req, res) {
 };
 
 // 添加书籍
-exports.getBooks = function(req, res) {
+exports.addBook = function(req, res) {
+  console.log(22222222);
     var book_pid=req.body.book_pid;
     var book_name=req.body.book_name;
     var author=req.body.author;
@@ -103,7 +106,7 @@ exports.getBooks = function(req, res) {
     var tel=req.body.tel;
     var create_date=req.body.create_date;
 
-    var data=new Books(
+    var data=new Book(
         {
           book_pid:book_pid,
           book_name:book_name,
@@ -118,6 +121,7 @@ exports.getBooks = function(req, res) {
         }
     );
     data.save(function(err){
+      console.log(1111111111111);
         if(err){
             res.json({"status":"error"})
         }else{
@@ -127,11 +131,11 @@ exports.getBooks = function(req, res) {
 };
 
 // 分页获取书籍
-exports.addBook = function(req, res) {
+exports.getBooks = function(req, res) {
     var curr=req.body.curr;
     //每页大小为10
     //返回所有查询的结果
-    var query=Books.find({});
+    var query=Book.find({});
     // 跳过前N个文档,返回其余的
     query.skip((curr-1)*10);
     // 限制返回结果的数量
@@ -145,7 +149,7 @@ exports.addBook = function(req, res) {
             res.send(err);
         }else{
             //计算数据总数
-            Books.find(function(err,result){
+            Book.find(function(err,result){
                 if(result.length%10>0){
                     pages=result.length/10+1;
                 }else{
@@ -161,7 +165,7 @@ exports.addBook = function(req, res) {
 //删除一个书籍
 exports.delBook= function(req, res) {
     var id=req.body.id;
-    Books.remove({_id:id},function(err,doc){
+    Book.remove({_id:id},function(err,doc){
         if(err){
             res.json({"status":"error"});
         }else{
@@ -175,11 +179,11 @@ exports.delBook= function(req, res) {
 exports.getBook = function(req, res) {
 
     var id=req.body.id;
-    Books.findOne({_id:id},function(err,doc){
+    Book.findOne({_id:id},function(err,doc){
         if(err){
             res.json({"status":"error"});
         }else{
-            res.json({"status":"success","data":doc.content})
+            res.json({"status":"success","data":doc})
         }
     });
 };

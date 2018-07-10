@@ -1,4 +1,7 @@
 D:\Program Files\MongoDB\Server\4.0\bin
 
-mongod --config "D:\mongoData\mongo.cfg"
-mongod --service --config "D:\mongoData\mongo.cfg" --install --serviceName "MongoDB"
+mongod --config "f:\data\mongo.ini"
+mongod --service --config "F:\data\mongo.ini" --install --serviceName "MongoDB"
+mongod --dbpath f:\data\db
+
+sc create mongodb binPath= "f:\mdb\bin\mongod.exe --service --config f:\data\mongo.ini"

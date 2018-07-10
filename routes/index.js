@@ -22,13 +22,16 @@ module.exports = function (app) {
 
     //分页获取书
     app.post('/book/get_books',User.getBooks);
-    //获取某一本书
-    app.post('/book/:id',User.getBook);
-    //添加一本书
-    app.post('/book/add_book', User.addBook);
     //删除一本书
     app.post('/book/del_book', User.delBook);
+    //获取某一本书
+    app.post('/book/get_book',User.getBook);
+    //添加一本书
+    app.post('/book/add_book', User.addBook);
     //更新一本书
     // app.put('/book/:id',Book.updateBook);
+
+    //记录WX用户信息
+
 
 };
